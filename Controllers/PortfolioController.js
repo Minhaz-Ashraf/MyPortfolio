@@ -12,10 +12,10 @@ const transporter = nodemailer.createTransport(
 
 const sendEmailController = (req, res) => {
   try {
-    const { name, email, msg } = req.body;
+    const { name, email,subject, msg } = req.body;
 
     //validation
-    if (!name || !email || !msg) {
+    if (!name || !email || !subject|| !msg) {
       return res.status(500).send({
         success: false,
         message: "Please Provide All Fields",
@@ -31,6 +31,7 @@ const sendEmailController = (req, res) => {
         <ul>
           <li><p>Name : ${name}</p></li>
           <li><p>Email : ${email}</p></li>
+          <li><p>Subject : ${subject}</p></li>
           <li><p>Message : ${msg}</p></li>
         </ul>
       `,
